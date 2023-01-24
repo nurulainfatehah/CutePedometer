@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "598521812311",
+    "project_id": "cutepedometer",
+    "storage_bucket": "cutepedometer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598521812311:android:6be551aa41c2b215af5a12",
+        "android_client_info": {
+          "package_name": "coding.insight.cutepedometer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598521812311-jlooqhm0b8el2gfkrv2qo4vlg6g2e2mq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu5wkDxvBNulMC2MB5wWxIV7TLf6HKE7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598521812311-jlooqhm0b8el2gfkrv2qo4vlg6g2e2mq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
