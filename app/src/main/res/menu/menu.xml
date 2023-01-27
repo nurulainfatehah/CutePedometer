@@ -4,8 +4,23 @@
 
     <item android:id="@+id/item1"
     android:icon= "@drawable/ic_menu"
-    android:title= "Log Out"
-    app:showAsAction="ifRoom"/>
+    android:title= "Menu"
+    app:showAsAction="ifRoom">
+
+        <menu>
+
+<!--            //If user dah login, display logout-->
+        <item android:id="@+id/LogOut"
+            android:title= "Log Out" />
+
+            <item android:id="@+id/LogIn"
+                android:title= "Log In" />
+
+
+        </menu>
+
+
+    </item>
 
 
 </menu>
