@@ -12,9 +12,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +25,14 @@ public class CounterActivity extends AppCompatActivity {
     private TextView textView;
     private double MagnitudePrevious = 0;
     private Integer stepCount = 0;
-    private ImageButton btnlogout;
+    private ImageButton btnMenu;
+    private PopupMenu popup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        btnlogout = findViewById(R.id.btnLogout);
+        btnMenu = findViewById(R.id.btnMenu);
         textView = findViewById(R.id.TV_STEPS);
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -58,6 +61,37 @@ public class CounterActivity extends AppCompatActivity {
         };
 
         sensorManager.registerListener(stepDetector, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        // Menu
+
+        popup = new PopupMenu(CounterActivity.this,btnMenu);
+
+        popup.getMenuInflater().inflate(R.menu.menu,popup.getMenu());
+        popup.setOnMenuItemClickListener(menuItem -> {
+            int id = menuItem.getItemId();
+
+            if(id == R.id.LogOut){
+
+            AlertDialog.Builder logoutcomfirm = new AlertDialog.Builder(CounterActivity.this);
+            logoutcomfirm.setMessage("Are you sure to logout ??? ").setCancelable(false).setPositiveButton("Yes", (dialogInterface, i) -> {
+                Toast.makeText(CounterActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
+                Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(logout);
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                    dialog.cancel();
+
+                }
+            });
+
+            AlertDialog alert = logoutcomfirm.create();
+            alert.setTitle("Logout Comfirmation");
+            alert.show();
+            }
+
+            return false;
+        });
     }
 
     @Override
@@ -90,33 +124,8 @@ public class CounterActivity extends AppCompatActivity {
         stepCount = sharedPreferences.getInt("stepCount", 0);
     }
 
-    public void onLogoutClick(View view) {
-        btnlogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                AlertDialog.Builder logoutcomfirm = new AlertDialog.Builder(CounterActivity.this);
-                logoutcomfirm.setMessage("Are you sure to logout ??? ").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(CounterActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
-                        Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(logout);
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        dialog.cancel();
-
-                    }
-                });
-
-                AlertDialog alert = logoutcomfirm.create();
-                alert.setTitle("Logout Comfirmation");
-                alert.show();
-
-            }
-        });
+    public void onMenuClick(View view) {
+        btnMenu.setOnClickListener(view1 -> popup.show());
 
     }
 
