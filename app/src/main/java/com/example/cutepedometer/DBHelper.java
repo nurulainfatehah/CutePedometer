@@ -70,11 +70,23 @@ public class DBHelper extends SQLiteOpenHelper
         if (cursor.getCount()>0)
         {
             return true;
-        }
-
-        else
+        }else
         {
             return false;
         }
+    }
+
+    public Boolean verifyForgotPassword(String name, String email, String phone){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("select * from users where name = ? and phone = ?", new String[] {name, email, phone});
+
+        if (cursor.getCount()>0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+
     }
 }
