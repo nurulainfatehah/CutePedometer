@@ -73,7 +73,7 @@ public class CounterActivity extends AppCompatActivity {
             if(id == R.id.LogOut){
 
             AlertDialog.Builder logoutcomfirm = new AlertDialog.Builder(CounterActivity.this);
-            logoutcomfirm.setMessage("Are you sure to logout ??? ").setCancelable(false).setPositiveButton("Yes", (dialogInterface, i) -> {
+            logoutcomfirm.setMessage("Are you sure to log out?").setCancelable(false).setPositiveButton("Yes", (dialogInterface, i) -> {
                 Toast.makeText(CounterActivity.this, "Logging Out", Toast.LENGTH_SHORT).show();
                 Intent logout = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(logout);
