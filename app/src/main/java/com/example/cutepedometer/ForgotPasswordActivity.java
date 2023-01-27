@@ -41,6 +41,7 @@ public class ForgotPasswordActivity  extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs" ;
     SharedPreferences sharedpreferences;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,7 @@ public class ForgotPasswordActivity  extends AppCompatActivity {
         email = (EditText)findViewById(R.id.editTextEmail);
         phone = (EditText)findViewById(R.id.editTextMobile);
         btnVerify = (Button)findViewById(R.id.cirVerifyButton);
+
 
         myDB = new DBHelper(this);
 
@@ -83,6 +85,9 @@ public class ForgotPasswordActivity  extends AppCompatActivity {
                         editor.commit();
 
                         btnVerify.setVisibility(View.INVISIBLE);
+                        name.setVisibility(View.INVISIBLE);
+                        email.setVisibility(View.INVISIBLE);
+                        phone.setVisibility(View.INVISIBLE);
 
                         /*Toast.makeText(ForgotPasswordActivity.this, "Yey, we have found your record. Enter your new password below", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
