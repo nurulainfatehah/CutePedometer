@@ -65,6 +65,7 @@ public class ForgotPasswordActivity  extends AppCompatActivity {
                 String verifyName = name.getText().toString();
                 String verifyMail = email.getText().toString();
                 String verifyPhone = phone.getText().toString();
+                SharedPreferences.Editor editor = sharedpreferences.edit();
 
                 if (verifyName.equals("") || verifyMail.equals("")) {
                     Toast.makeText(ForgotPasswordActivity.this, "Please Enter Registered Name.", Toast.LENGTH_SHORT).show();
@@ -73,12 +74,31 @@ public class ForgotPasswordActivity  extends AppCompatActivity {
                 } else if(verifyPhone.equals((""))){
                     Toast.makeText(ForgotPasswordActivity.this, "Please Enter Registered Phone.", Toast.LENGTH_SHORT).show();
                 }else{
+                    Boolean result = myDB.verifyForgotPassword(verifyName, verifyMail, verifyPhone);
 
+                    if(result == true){
+                        editor.putString(String.valueOf(name), verifyName);
+                        editor.putString(String.valueOf(email), verifyMail);
+                        editor.putString(String.valueOf(phone), verifyPhone);
+                        editor.commit();
+
+                        Toast.makeText(ForgotPasswordActivity.this, "", Toast.LENGTH_SHORT).show();
+
+
+                    }else{
+                        Toast.makeText(ForgotPasswordActivity.this, "Sorry, we couldn't find any users record with the information entered.", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
 
             }
 
         });
+    }
+
+    public void onLoginClick(View view) {
+        startActivity(new Intent(this,LoginActivity.class));
+        overridePendingTransition(R.anim.slide_in_left,R.anim.stay);
     }
 
 
