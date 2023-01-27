@@ -28,13 +28,14 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/btnLogout"
+            android:id="@+id/btnMenu"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="80dp"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:src="@drawable/ic_menu"
             tools:ignore="SpeakableTextPresentCheck"
-            android:onClick="onLogoutClick"/>
+            android:onClick="onMenuClick"
+            android:contentDescription="logout" />
 
     </LinearLayout>
 
