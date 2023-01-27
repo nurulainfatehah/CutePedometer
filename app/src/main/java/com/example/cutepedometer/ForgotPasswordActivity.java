@@ -82,8 +82,11 @@ public class ForgotPasswordActivity  extends AppCompatActivity {
                         editor.putString(String.valueOf(phone), verifyPhone);
                         editor.commit();
 
-                        Toast.makeText(ForgotPasswordActivity.this, "", Toast.LENGTH_SHORT).show();
+                        btnVerify.setVisibility(View.INVISIBLE);
 
+                        /*Toast.makeText(ForgotPasswordActivity.this, "Yey, we have found your record. Enter your new password below", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
+                        startActivity(intent);*/
 
                     }else{
                         Toast.makeText(ForgotPasswordActivity.this, "Sorry, we couldn't find any users record with the information entered.", Toast.LENGTH_SHORT).show();

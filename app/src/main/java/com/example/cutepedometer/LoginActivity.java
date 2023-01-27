@@ -81,8 +81,8 @@ import com.google.firebase.auth.FirebaseUser;
                             editor.commit();
 
                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), CounterActivity.class);
-                            startActivity(intent);
+
+
                         } else {
                             Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                         }
