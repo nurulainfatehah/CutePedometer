@@ -2,6 +2,7 @@ package com.example.cutepedometer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -9,11 +10,15 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.SharedPreferences;
 
@@ -43,6 +48,7 @@ import com.google.firebase.auth.FirebaseUser;
         DBHelper myDB;
         public static final String MyPREFERENCES = "MyPrefs" ;
         SharedPreferences sharedpreferences;
+        TextView forgotTxtView;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +96,7 @@ import com.google.firebase.auth.FirebaseUser;
                 }
             });
 
+
         }
 
         @Override
@@ -127,4 +134,5 @@ import com.google.firebase.auth.FirebaseUser;
             startActivity(new Intent(this, RegisterActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
         }
+
     }

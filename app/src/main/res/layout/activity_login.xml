@@ -80,13 +80,16 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <TextView
+            <!--<TextView
                 style="@style/viewParent"
                 android:layout_gravity="end"
                 android:layout_marginTop="10dp"
                 android:text="Forgot Password?"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="@dimen/newsMoreTextSize" />
+                android:textSize="@dimen/newsMoreTextSize"
+                android:autoLink="web"
+                android:clickable="true"
+                android:linksClickable="true" />-->
 
             <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                 android:id="@+id/cirLoginButton"
